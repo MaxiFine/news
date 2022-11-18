@@ -29,8 +29,11 @@
                 <p>
                     by <span class="font-weight-bold">{{ comment.author }} &middot;</span>
                     on {{article.date}} <br>
-                    {{ comment }}
+                    {{ comment }} <br>
+                    <a href="{% url 'comment_edit' comment.pk %}">Edit</a> | 
+                    <a href="{% url 'article_delete' comment.pk %}">Delete</a> |
                 </p>
+                
             {% endfor %}
         </div>
         </div>

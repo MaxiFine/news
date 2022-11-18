@@ -70,7 +70,7 @@ class CommentView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class CommentUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+class CommentUpdate(LoginRequiredMixin, UpdateView):
     model = Comments
     template_name = 'comment_edit.html'
     fields = ('comment',)
@@ -87,7 +87,7 @@ class CommentUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return obj.author == self.request.user
 
 
-class CommentDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+class CommentDelete(LoginRequiredMixin, DeleteView):
     model = Comments
     template_name = 'comment_del.html'
 
@@ -97,6 +97,6 @@ class CommentDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 
 
-# class CommentDetailview(LoginRequiredMixin,  DetailView):
-#     model = Comments
-#     template_name = 'comment_detail.html'
+class CommentDetailview(LoginRequiredMixin,  DetailView):
+    model = Comments
+    template_name = 'comment_detail.html'

@@ -18,6 +18,6 @@ urlpatterns = [
         path('<int:pk>/delete/', ArticleDeleteView.as_view(), name='article_delete'),
         path('comment/<int:article_id>/', CommentView.as_view(), name='add_comment'),
         path('<int:comments_id>/comment_edit/', CommentUpdate.as_view(), name='comment_edit'),
-        path('<int:article_id>/comment_del/', CommentDelete.as_view(), name='comment_del'),
+        path('<int:commentts_id>/comment_del/', CommentDelete.as_view(), name='comment_del'),
         path('my_view/', MyArticlesView.as_view(), name='my_view'),
 ]
