@@ -17,7 +17,12 @@ urlpatterns = [
         path('<int:pk>/edit/', ArticleUpdateView.as_view(), name='article_edit'),
         path('<int:pk>/delete/', ArticleDeleteView.as_view(), name='article_delete'),
         path('comment/<int:article_id>/', CommentView.as_view(), name='add_comment'),
+<<<<<<< HEAD
         path('<int:article_id>/<int:comments_id>/comment_edit/', CommentUpdate.as_view(), name='comment_edit'),
         path('<int:article_id>/<int:comments_id>/comment_del/', CommentDelete.as_view(), name='comment_del'),
+=======
+        path('<int:article_id>/<int:comment_id>comment_edit/', CommentUpdate.as_view(), name='comment_edit'),
+        path('<int:artcle_id>/<int:comment_id>comment_del/', CommentDelete.as_view(), name='comment_del'),
+>>>>>>> ddc56fe0353ceb24826b0e2dd121e8bcc5bf335d
         path('my_view/', MyArticlesView.as_view(), name='my_view'),
 ]

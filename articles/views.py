@@ -108,3 +108,9 @@ class CommentDetailview(LoginRequiredMixin,  DetailView):
     model = Comments
     template_name = 'comment_detail.html'
 
+<<<<<<< HEAD
+=======
+class CommentDetailview(LoginRequiredMixin,  DetailView):
+    model = Comments
+    template_name = 'comment_detail.html'
+>>>>>>> ddc56fe0353ceb24826b0e2dd121e8bcc5bf335d
