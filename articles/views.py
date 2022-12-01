@@ -6,21 +6,27 @@ from .models import Article, Comments
 
 
 # Create your views here.
-class MyArticlesView(LoginRequiredMixin, ListView):  # to sort User articles alone
+# This view is to sort User articles alone
+class MyArticlesView(LoginRequiredMixin, ListView):  
     template_name = 'my_view.html'
 
     def get_queryset(self):
-        querryset = Article.objects.filter(author=self.request.user)
+        querryset = Article.objects.filter(author=self.request.user).order_by('-id')
         return querryset
 
 
 class ArticleListView(LoginRequiredMixin, ListView):
-    model = Article
+
     template_name = 'article_list.html'
 
     def test_func(self): # adds the user authomatically
         obj = self.get_object()
         return obj.author == self.request.user
+
+    def get_queryset(self):
+        queryset = Article.objects.all()
+        queryset = queryset.order_by('-id')  # this line enables descending order
+        return queryset
 
 
 class ArticleDetailview(LoginRequiredMixin,  DetailView):
@@ -70,7 +76,7 @@ class CommentView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class CommentUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+class CommentUpdate(LoginRequiredMixin, UpdateView):
     model = Comments
     template_name = 'comment_edit.html'
     fields = ('comment',)
@@ -87,16 +93,18 @@ class CommentUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return obj.author == self.request.user
 
 
-class CommentDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+class CommentDelete(LoginRequiredMixin, DeleteView):
     model = Comments
     template_name = 'comment_del.html'
+    success_url = reverse_lazy('article_list')
+
 
     def test_func(self):  # this func enables django to add the user by default
         obj = self.get_object()
         return obj.author == self.request.user
 
 
+class CommentDetailview(LoginRequiredMixin,  DetailView):
+    model = Comments
+    template_name = 'comment_detail.html'
 
-# class CommentDetailview(LoginRequiredMixin,  DetailView):
-#     model = Comments
-#     template_name = 'comment_detail.html'
