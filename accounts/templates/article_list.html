@@ -29,15 +29,13 @@
                 <p>
                     by <span class="font-weight-bold">{{ comment.author }} &middot;</span>
                     on {{article.date}} <br>
-<<<<<<< HEAD
+
                     {{ comment }}
                     <a href="">Edit</a> | 
                     <a href="">Delete</a>
-=======
+
                     {{ comment }} <br>
-                    <a href="{% url 'comment_edit' comment.pk %}">Edit</a> | 
-                    <a href="{% url 'article_delete' comment.pk %}">Delete</a> |
->>>>>>> ddc56fe0353ceb24826b0e2dd121e8bcc5bf335d
+
                 </p>
                 
             {% endfor %}

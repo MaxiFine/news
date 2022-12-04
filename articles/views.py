@@ -96,7 +96,7 @@ class CommentUpdate(LoginRequiredMixin, UpdateView):
 class CommentDelete(LoginRequiredMixin, DeleteView):
     model = Comments
     template_name = 'comment_del.html'
-    success_url = reverse_lazy('article_list')
+    success_url = reverse_lazy('home')
 
 
     def test_func(self):  # this func enables django to add the user by default
@@ -108,9 +108,7 @@ class CommentDetailview(LoginRequiredMixin,  DetailView):
     model = Comments
     template_name = 'comment_detail.html'
 
-<<<<<<< HEAD
-=======
+
 class CommentDetailview(LoginRequiredMixin,  DetailView):
     model = Comments
     template_name = 'comment_detail.html'
->>>>>>> ddc56fe0353ceb24826b0e2dd121e8bcc5bf335d
